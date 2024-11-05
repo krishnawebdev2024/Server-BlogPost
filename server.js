@@ -1,12 +1,16 @@
 import express, {json} from 'express';
+import cors from 'cors';
 import dotenv from "dotenv";
 
 import blogPostsRoutes from './routes/blogPostsRoutes.js';
 
 import {createBlogSchema} from './database/createBlogSchema.js';
 
+
 dotenv.config();
+
 const app = express();
+app.use(cors());  // Enable CORS for all routes
 app.use(json());
 
 app.use("/api/v1/BlogPosts", blogPostsRoutes);
